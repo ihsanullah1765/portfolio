@@ -1,0 +1,1888 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ihsan - WordPress Expert</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/jpeg" href="profile-photo.png">
+    <style>
+        /* CSS will go here */
+        :root {
+            --primary-color: #6c63ff;
+            --secondary-color: #4d44db;
+            --dark-color: #2f2e41;
+            --light-color: #f8f9fa;
+            --gray-color: #6c757d;
+            --success-color: #28a745;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark-color);
+            background-color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--dark-color);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background: var(--primary-color);
+            bottom: -10px;
+            left: 25%;
+        }
+
+        .section-title p {
+            color: var(--gray-color);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            padding: 10px 0;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+            border: 2px solid var(--primary-color);
+        }
+
+        .logo-text {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--dark-color);
+        }
+
+        .logo-text span {
+            color: var(--primary-color);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-item {
+            margin-left: 30px;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: var(--dark-color);
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(108, 99, 255, 0.1) 0%, rgba(255, 255, 255, 1) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .hero-content h1 span {
+            color: var(--primary-color);
+        }
+
+        .hero-content p {
+            font-size: 20px;
+            color: var(--gray-color);
+            margin-bottom: 30px;
+        }
+
+        .hero-social {
+            display: flex;
+            margin-top: 30px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--light-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--dark-color);
+            font-size: 18px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .social-icon:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        .hero-image {
+            position: absolute;
+            margin-right: 7%;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            max-width: 600px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-image {
+            flex: 1;
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 20px 30px rgba(108, 99, 255, 0.2);
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: var(--dark-color);
+        }
+
+        .about-text p {
+            color: var(--gray-color);
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        .about-skills {
+            margin-top: 30px;
+        }
+
+        .skill-item {
+            margin-bottom: 15px;
+        }
+
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+
+        .skill-bar {
+            height: 8px;
+            background-color: #e9ecef;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 4px;
+            transition: width 1.5s ease;
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(108, 99, 255, 0.15);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 28px;
+        }
+
+        .service-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+
+        .service-card p {
+            color: var(--gray-color);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* Portfolio Section */
+        .portfolio-filter {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: none;
+            border: none;
+            padding: 8px 20px;
+            margin: 5px;
+            cursor: pointer;
+            font-weight: 500;
+            color: var(--gray-color);
+            transition: all 0.3s ease;
+            border-radius: 30px;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .portfolio-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(108, 99, 255, 0.2);
+        }
+
+        .portfolio-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(108, 99, 255, 0.9);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-overlay h3 {
+            color: white;
+            font-size: 22px;
+            margin-bottom: 10px;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-overlay p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 14px;
+            margin-bottom: 20px;
+            transform: translateY(20px);
+            transition: all 0.3s ease 0.1s;
+        }
+
+        .portfolio-overlay a {
+            color: white;
+            font-size: 18px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 5px;
+            transform: translateY(20px);
+            transition: all 0.3s ease 0.2s;
+        }
+
+        .portfolio-item:hover .portfolio-overlay h3,
+        .portfolio-item:hover .portfolio-overlay p,
+        .portfolio-item:hover .portfolio-overlay a {
+            transform: translateY(0);
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .skill-badge {
+            background-color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .skill-badge:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(108, 99, 255, 0.15);
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .skill-badge i {
+            margin-right: 10px;
+            font-size: 18px;
+        }
+
+        /* Testimonials Section */
+        .testimonials-container {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .testimonial-slider {
+            overflow: hidden;
+        }
+
+        .testimonial-slide {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            margin: 0 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-slide:hover {
+            box-shadow: 0 15px 40px rgba(108, 99, 255, 0.15);
+        }
+
+        .client-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 20px;
+            border: 3px solid var(--primary-color);
+        }
+
+        .client-rating {
+            color: #ffc107;
+            margin-bottom: 15px;
+        }
+
+        .client-review {
+            color: var(--gray-color);
+            font-style: italic;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .client-info h4 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .client-info p {
+            color: var(--gray-color);
+            font-size: 14px;
+        }
+
+        .slider-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #e9ecef;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .slider-dot.active {
+            background-color: var(--primary-color);
+            transform: scale(1.2);
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: flex;
+            gap: 50px;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-info h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .contact-info p {
+            color: var(--gray-color);
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        .contact-details {
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(108, 99, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--primary-color);
+            font-size: 18px;
+        }
+
+        .contact-text h4 {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .contact-text p {
+            margin: 0;
+            color: var(--gray-color);
+            font-size: 14px;
+        }
+
+        .contact-social {
+            display: flex;
+        }
+
+        .contact-social a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(108, 99, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--primary-color);
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-social a:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .contact-form {
+            flex: 1;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #e9ecef;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.2);
+            outline: none;
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(108, 99, 255, 0.3);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(108, 99, 255, 0.4);
+        }
+
+        .form-message {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            display: none;
+        }
+
+        .form-message.success {
+            background-color: rgba(40, 167, 69, 0.1);
+            color: var(--success-color);
+            display: block;
+        }
+
+        .form-message.error {
+            background-color: rgba(220, 53, 69, 0.1);
+            color: #dc3545;
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .footer-logo h2 {
+            font-size: 22px;
+        }
+
+        .footer-logo h2 span {
+            color: var(--primary-color);
+        }
+
+        .footer-social {
+            display: flex;
+            margin-bottom: 20px;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 10px;
+            color: white;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            margin: 0 15px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .copyright {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+            box-shadow: 0 5px 15px rgba(108, 99, 255, 0.3);
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-5px);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero-content h1 {
+                font-size: 40px;
+            }
+
+            .hero-image {
+                width: 45%;
+                opacity: 0.7;
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+
+            .contact-container {
+                flex-direction: column;
+            }
+        }
+
+        /* Add these styles to your existing CSS */
+        .portfolio-pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 40px;
+        }
+
+        .portfolio-pagination button {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            margin: 0 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .portfolio-pagination button:hover:not(:disabled) {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .portfolio-pagination button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .pagination-numbers {
+            display: flex;
+            margin: 0 10px;
+        }
+
+        .pagination-numbers button {
+            font-weight: 500;
+        }
+
+        .pagination-numbers button.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                padding: 40px 0;
+                transition: all 0.5s ease;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-item {
+                margin: 15px 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .hamburger.active div:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+
+            .hamburger.active div:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active div:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+
+            .hero {
+                text-align: center;
+            }
+
+            .hero-content {
+                margin: 0 auto;
+            }
+
+            .hero-social {
+                justify-content: center;
+            }
+
+            .hero-image {
+                display: none;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+
+            .section-title h2 {
+                font-size: 30px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-content h1 {
+                font-size: 32px;
+            }
+
+            .hero-content p {
+                font-size: 18px;
+            }
+
+            .section-title h2 {
+                font-size: 26px;
+            }
+
+            .service-card {
+                padding: 20px;
+            }
+        }
+
+        /* Animation Classes */
+        .animate-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .animate-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-1 {
+            transition-delay: 0.2s;
+        }
+
+        .delay-2 {
+            transition-delay: 0.4s;
+        }
+
+        .delay-3 {
+            transition-delay: 0.6s;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <img src="profile-photo.jpg" alt="Ihsan" class="logo-img">
+                <span class="logo-text">Ihsan<span>.</span></span>
+            </a>
+            <div class="hamburger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
+                <li class="nav-item"><a href="#portfolio" class="nav-link">Portfolio</a></li>
+                <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
+                <li class="nav-item"><a href="#testimonials" class="nav-link">Testimonials</a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" />
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content animate-in">
+                <h1>Hello I'm <span>Ihsan</span></h1>
+                <p>Expert in WordPress Development</p>
+                <div class="hero-social">
+                    <a href="https://facebook.com/eyeyoou" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.linkedin.com/in/ihsanullah1765" class="social-icon"><i
+                            class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/ihsanullah1765" class="social-icon"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <img src="44.png" alt="Developer Illustration" class="hero-image animate-in delay-1">
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-title animate-in">
+                <h2>About Me</h2>
+                <p>I'm a passionate WordPress developer with 3+ years of experience creating beautiful, functional
+                    websites for clients worldwide.</p>
+            </div>
+            <div class="about-content">
+                <div class="about-image animate-in">
+                    <img src="3.jpg" alt="Ihsan">
+                </div>
+                <div class="about-text animate-in delay-1">
+                    <h3>Who am I?</h3>
+                    <p>I'm Ihsan, a professional WordPress developer specializing in plugin development, theme
+                        customization, and business solutions. I help businesses establish their online presence with
+                        high-quality, performance-optimized websites.</p>
+                    <p>My approach combines technical expertise with creative design to deliver websites that not only
+                        look great but also drive results. I'm committed to providing exceptional service and building
+                        long-term relationships with my clients.</p>
+                    <div class="about-skills">
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>WordPress Development</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Plugin Development</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>E-Commerce</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title animate-in">
+                <h2>My Services</h2>
+                <p>I offer a comprehensive range of WordPress development services to meet all your website needs.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card animate-in">
+                    <div class="service-icon">
+                        <i class="fab fa-wordpress"></i>
+                    </div>
+                    <h3>WordPress Website Development</h3>
+                    <p>Custom WordPress websites built from scratch or using premium themes, tailored to your specific
+                        requirements and business goals.</p>
+                </div>
+                <div class="service-card animate-in delay-1">
+                    <div class="service-icon">
+                        <i class="fas fa-plug"></i>
+                    </div>
+                    <h3>Plugin Development</h3>
+                    <p>Custom WordPress plugins developed to extend your website's functionality exactly how you need
+                        it.</p>
+                </div>
+                <div class="service-card animate-in delay-2">
+                    <div class="service-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h3>E-Commerce Website</h3>
+                    <p>Powerful WooCommerce solutions to help you sell products online with secure payment gateways and
+                        intuitive shopping experiences.</p>
+                </div>
+                <div class="service-card animate-in">
+                    <div class="service-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h3>Speed Optimization</h3>
+                    <p>Website performance optimization to ensure fast loading times, better user experience, and
+                        improved search rankings.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <div class="section-title animate-in">
+                <h2>My Portfolio</h2>
+                <p>Here are some of my recent projects. Each one was carefully crafted to meet the client's specific
+                    needs.</p>
+            </div>
+            <div class="portfolio-filter animate-in">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="website">Websites</button>
+                <button class="filter-btn" data-filter="ecommerce">E-Commerce</button>
+                <button class="filter-btn" data-filter="custom">Custom Solutions</button>
+            </div>
+
+            <div class="portfolio-grid">
+                <!-- Portfolio items will be dynamically inserted here by JavaScript -->
+            </div>
+        </div>
+        <!-- Replace the static portfolio items with this empty container -->
+
+        <!-- Add this pagination HTML after the portfolio-grid -->
+        <div class="portfolio-pagination animate-in delay-1">
+            <button class="pagination-prev" disabled><i class="fas fa-chevron-left"></i></button>
+            <div class="pagination-numbers">
+                <!-- Page numbers will be dynamically inserted here -->
+            </div>
+            <button class="pagination-next"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+        <div class="container">
+            <div class="section-title animate-in">
+                <h2>My Skills</h2>
+                <p>I've mastered a wide range of WordPress-related skills to provide comprehensive solutions for my
+                    clients.</p>
+            </div>
+            <div class="skills-container">
+                <div class="skill-badge animate-in">
+                    <i class="fab fa-wordpress"></i>
+                    <span>WordPress Development</span>
+                </div>
+                <div class="skill-badge animate-in delay-1">
+                    <i class="fas fa-code"></i>
+                    <span>Website Development</span>
+                </div>
+                <div class="skill-badge animate-in delay-2">
+                    <i class="fas fa-paint-brush"></i>
+                    <span>Elementor</span>
+                </div>
+                <div class="skill-badge animate-in">
+                    <i class="fas fa-cube"></i>
+                    <span>WPBakery</span>
+                </div>
+                <div class="skill-badge animate-in delay-1">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>WooCommerce Setup & Customization</span>
+                </div>
+                <div class="skill-badge animate-in delay-2">
+                    <i class="fas fa-palette"></i>
+                    <span>Theme Customization</span>
+                </div>
+                <div class="skill-badge animate-in">
+                    <i class="fas fa-plug"></i>
+                    <span>Plugin Development</span>
+                </div>
+                <div class="skill-badge animate-in delay-1">
+                    <i class="fas fa-server"></i>
+                    <span>Website Migration & Backup</span>
+                </div>
+                <div class="skill-badge animate-in delay-2">
+                    <i class="fas fa-bug"></i>
+                    <span>Bug Fixing & Debugging</span>
+                </div>
+                <div class="skill-badge animate-in">
+                    <i class="fas fa-cogs"></i>
+                    <span>cPanel</span>
+                </div>
+                <div class="skill-badge animate-in delay-1">
+                    <i class="fas fa-file-upload"></i>
+                    <span>FTP</span>
+                </div>
+                <div class="skill-badge animate-in delay-2">
+                    <i class="fas fa-database"></i>
+                    <span>phpMyAdmin Handling</span>
+                </div>
+                <div class="skill-badge animate-in">
+                    <i class="fas fa-comments"></i>
+                    <span>Client Communication & Support</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-title animate-in">
+                <h2>Client Testimonials</h2>
+                <p>Here's what some of my clients have to say about working with me.</p>
+            </div>
+            <div class="testimonials-container">
+                <div class="testimonial-slider">
+                    <div class="testimonial-slide animate-in">
+                        <img src="t-2.jpg" alt="Client" class="client-img">
+                        <div class="client-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="client-review">"Ihsan transformed our outdated website into a modern, functional
+                            platform that has significantly increased our online sales. His attention to detail and
+                            technical expertise are unmatched."</p>
+                        <div class="client-info">
+                            <h4>Charmaine</h4>
+                            <p>CEO, Retail Company</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-slide animate-in delay-1">
+                        <img src="t_1.png" alt="Client" class="client-img">
+                        <div class="client-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="client-review">"Working with Ihsan was a pleasure from start to finish. He delivered
+                            our eCommerce site ahead of schedule and under budget. The site performs flawlessly and
+                            looks fantastic."</p>
+                        <div class="client-info">
+                            <h4>Debbie</h4>
+                            <p>Founder, Tech Startup</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-slide animate-in delay-2">
+                        <img src="J.png" alt="Client" class="client-img">
+                        <div class="client-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="client-review">"Ihsan's plugin customization skills saved our business. He created a
+                            custom solution that integrated perfectly with our existing systems and has been running
+                            without issues for over a year."</p>
+                        <div class="client-info">
+                            <h4>Joshua</h4>
+                            <p>Operations Manager, Logistics</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-slide animate-in">
+                        <img src="t-3.jpg" alt="Client" class="client-img">
+                        <div class="client-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="client-review">"The website Ihsan built for us has been instrumental in growing our
+                            nonprofit. It's user-friendly, visually appealing, and has all the functionality we need to
+                            manage donations and volunteers."</p>
+                        <div class="client-info">
+                            <h4>xchewy</h4>
+                            <p>Director, Nonprofit Organization</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-slide animate-in delay-1">
+                        <img src="t_4.png" alt="Client" class="client-img">
+                        <div class="client-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="client-review">"I've worked with many developers over the years, but Ihsan stands out
+                            for his professionalism, communication, and technical skills. He's my go-to for all
+                            WordPress projects now."</p>
+                        <div class="client-info">
+                            <h4>Martin</h4>
+                            <p>Marketing Director, Agency</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-slide animate-in delay-2">
+                        <img src="L.png" alt="Client" class="client-img">
+                        <div class="client-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="client-review">"Ihsan not only built our website but also trained our team on how to
+                            manage it. His patience and clear instructions made the transition seamless. The site has
+                            exceeded our expectations."</p>
+                        <div class="client-info">
+                            <h4>Lisa Thompson</h4>
+                            <p>Small Business Owner</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-slide animate-in">
+                        <img src="t-1.png" alt="Client" class="client-img">
+                        <div class="client-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="client-review">"The speed optimization work Ihsan did on our site was remarkable. Our
+                            load times decreased by over 70%, and we've seen a significant improvement in our search
+                            rankings and conversion rates."</p>
+                        <div class="client-info">
+                            <h4>Qasim Ali</h4>
+                            <p>E-Commerce Manager</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-slide animate-in delay-1">
+                        <img src="O.png" alt="Client" class="client-img">
+                        <div class="client-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="client-review">"Ihsan took our vague ideas and turned them into a beautiful,
+                            functional website that perfectly represents our brand. His ability to understand our vision
+                            and execute it was impressive."</p>
+                        <div class="client-info">
+                            <h4>Olivia Martinez</h4>
+                            <p>Creative Director</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="slider-nav">
+                    <div class="slider-dot active"></div>
+                    <div class="slider-dot"></div>
+                    <div class="slider-dot"></div>
+                    <div class="slider-dot"></div>
+                    <div class="slider-dot"></div>
+                    <div class="slider-dot"></div>
+                    <div class="slider-dot"></div>
+                    <div class="slider-dot"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title animate-in">
+                <h2>Get In Touch</h2>
+                <p>Have a project in mind or want to discuss potential collaboration? Feel free to reach out!</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info animate-in">
+                    <h3>Let's talk about your project</h3>
+                    <p>I'm available for freelance work and would love to hear about your project. Whether you need a
+                        complete website, custom functionality, or help with an existing site, I'm here to help.</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Location</h4>
+                                <p>Mandi Bahauddin, Pakistan</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Email</h4>
+                                <p>ihsanullah3015@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Phone</h4>
+                                <p>+92 340 575 0703</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-social">
+                        <a href="https://facebook.com/eyeyoou"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.linkedin.com/in/ihsanullah1765"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://github.com/ihsanullah1765"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form animate-in delay-1">
+                    <form id="contactForm" action="https://formspree.io/f/myzppbng" method="POST">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="subject" placeholder="Subject" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" name="message" placeholder="Your Message"
+                                required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                        <div class="form-message"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <!-- <img src="assets/images/profile-photo.jpg" alt="Ihsan"> -->
+                    <h2>Ihsan Ullah<span>.</span></h2>
+                </div>
+                <div class="footer-social">
+                    <a href="https://facebook.com/eyeyoou"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.linkedin.com/in/ihsanullah1765"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/ihsanullah1765"><i class="fab fa-github"></i></a>
+                </div>
+                <div class="footer-links">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#services">Services</a>
+                    <a href="#portfolio">Portfolio</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#testimonials">Testimonials</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="copyright">
+                    &copy; <span id="year"></span> Ihsan. All Rights Reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Set current year in footer
+            document.getElementById('year').textContent = new Date().getFullYear();
+
+            // Header scroll effect
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', function () {
+                if (window.scrollY > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // Mobile menu toggle
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+
+            hamburger.addEventListener('click', function () {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+
+            // Close mobile menu when clicking a link
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', function () {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                });
+            });
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // Back to top button
+            const backToTop = document.querySelector('.back-to-top');
+            window.addEventListener('scroll', function () {
+                if (window.scrollY > 300) {
+                    backToTop.classList.add('active');
+                } else {
+                    backToTop.classList.remove('active');
+                }
+            });
+
+            backToTop.addEventListener('click', function () {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // Portfolio filtering
+            // Portfolio filtering and pagination
+            const portfolioItems = [
+                {
+                    category: "website",
+                    title: "Book Author Website",
+                    description: "Website for a book author to showcase his books",
+                    image: "q1.png",
+                    gallery: [
+                        "book_reading_website.png"
+                    ]
+                },
+                {
+                    category: "ecommerce",
+                    title: "Online Store",
+                    description: "I build this website from scratch on WordPress with Elementor Page Builder & OceanWP theme this Website has all the eCommerce Features and functionality and a modern & eye-Catching user interface.",
+                    image: "mobile_store.png",
+                    gallery: [
+                        "mobile_ecom_store.png",
+                    ]
+                },
+                {
+                    category: "website",
+                    title: "Tang Accounting",
+                    description: "Developed the website for Tang Accounting using WordPress, showcasing their premium financial services tailored to businesses in the UAE and beyond.",
+                    image: "capture3.png",
+                    gallery: [
+                        "screencapture-tangaccounting-home.png",
+                    ]
+                },
+                {
+                    category: "website",
+                    title: "Hair Salon",
+                    description: "Build this website from scratch on WordPress with Elementor Page Builder this website uses squareup for online booking.",
+                    image: "J _Beauty.png",
+                    gallery: [
+                        "screencapture-jbeautysalon-net.png",
+                        "screencapture-jbeautysalon-net.png"
+                    ]
+                },
+                {
+                    category: "ecommerce",
+                    title: "Smart Home",
+                    description: "It's a Spanish platform that offers IoT services for houses it's built on Elementor page builder I did some customization on this website to translate its default Spanish language into English.",
+                    image: "edomotic.png",
+                    gallery: [
+                        "edomotic-website-complete-page.png"
+                    ]
+                },
+                {
+                    category: "website",
+                    title: "Digital Agency",
+                    description: "I built Datacorns.com using WordPress for a modern data consulting company. The website showcases their mission to turn data into a competitive advantage through smart analytics and custom software solutions. It features a clean, responsive design focused on clarity, performance, and user engagement.",
+                    image: "capture5.png",
+                    gallery: [
+                        "screencapture-datacorns.png"
+                    ]
+                },
+                {
+                    category: "custom",
+                    title: "AIH Casual Claims",
+                    description: "Developed this custom web application using HTML, CSS, PHP, & MySQL to streamline the management of casual claims. The system enables users to manage timetables, submit and approve claims through a secure login-based interface. It features role-based navigation.",
+                    image: "capture6.png",
+                    gallery: [
+                        "capture7.png",
+                        "capture8.png"
+                    ]
+                },
+                // ...add gallery property to other items as needed...
+            ];
+
+            const portfolioGrid = document.querySelector('.portfolio-grid');
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const paginationNumbers = document.querySelector('.pagination-numbers');
+            const paginationPrev = document.querySelector('.pagination-prev');
+            const paginationNext = document.querySelector('.pagination-next');
+
+            let currentPage = 1;
+            let itemsPerPage = 6;
+            let currentFilter = 'all';
+            let filteredItems = [...portfolioItems];
+
+            // 3. Update renderPortfolioItems to use Fancybox and galleries
+            function renderPortfolioItems(items, page) {
+                portfolioGrid.innerHTML = '';
+                const startIndex = (page - 1) * itemsPerPage;
+                const endIndex = startIndex + itemsPerPage;
+                const paginatedItems = items.slice(startIndex, endIndex);
+
+                paginatedItems.forEach(item => {
+                    const portfolioItem = document.createElement('div');
+                    portfolioItem.className = 'portfolio-item';
+                    portfolioItem.setAttribute('data-category', item.category);
+
+                    // Prepare gallery links (hidden except the first)
+                    let galleryLinks = '';
+                    if (item.gallery && item.gallery.length > 1) {
+                        galleryLinks = item.gallery.slice(1).map(url => {
+                            const isPdf = url.endsWith('.pdf');
+                            return `
+                    <a href="${url}" data-fancybox="gallery-${item.title.replace(/\s+/g, '')}" data-caption="${item.title}" style="display:none" ${isPdf ? 'data-type="pdf"' : ''}></a>
+                `;
+                        }).join('');
+                    }
+
+                    portfolioItem.innerHTML = `
+            <a href="${item.gallery && item.gallery.length ? item.gallery[0] : item.image}" data-fancybox="gallery-${item.title.replace(/\s+/g, '')}" data-caption="${item.title}">
+                <img src="${item.image}" alt="${item.title}" class="portfolio-img">
+            </a>
+            <div class="portfolio-overlay">
+                <h3>${item.title}</h3>
+                <p>${item.description}</p>
+                <div>
+                    <a href="${item.gallery && item.gallery.length ? item.gallery[0] : item.image}" data-fancybox="gallery-${item.title.replace(/\s+/g, '')}" data-caption="${item.title}">
+                        <i class="fas fa-eye"></i>
+                    </a>
+                </div>
+            </div>
+            ${galleryLinks}
+        `;
+                    portfolioGrid.appendChild(portfolioItem);
+                });
+            }
+
+            // Function to render pagination numbers
+            function renderPaginationNumbers(items) {
+                paginationNumbers.innerHTML = '';
+                const pageCount = Math.ceil(items.length / itemsPerPage);
+
+                for (let i = 1; i <= pageCount; i++) {
+                    const pageNumber = document.createElement('button');
+                    pageNumber.textContent = i;
+                    pageNumber.className = i === currentPage ? 'active' : '';
+
+                    pageNumber.addEventListener('click', () => {
+                        currentPage = i;
+                        renderPortfolioItems(filteredItems, currentPage);
+                        updatePaginationButtons();
+                        window.scrollTo({
+                            top: portfolioGrid.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    });
+
+                    paginationNumbers.appendChild(pageNumber);
+                }
+            }
+
+            // Function to update pagination buttons
+            function updatePaginationButtons() {
+                const pageCount = Math.ceil(filteredItems.length / itemsPerPage);
+
+                // Update active state for page numbers
+                document.querySelectorAll('.pagination-numbers button').forEach((button, index) => {
+                    button.classList.toggle('active', index + 1 === currentPage);
+                });
+
+                // Update prev/next buttons
+                paginationPrev.disabled = currentPage === 1;
+                paginationNext.disabled = currentPage === pageCount;
+            }
+
+            // Function to filter portfolio
+            function filterPortfolio(category) {
+                currentFilter = category;
+                currentPage = 1;
+
+                if (category === 'all') {
+                    filteredItems = [...portfolioItems];
+                } else {
+                    filteredItems = portfolioItems.filter(item => item.category === category);
+                }
+
+                renderPortfolioItems(filteredItems, currentPage);
+                renderPaginationNumbers(filteredItems);
+                updatePaginationButtons();
+            }
+
+            // Initialize portfolio
+            filterPortfolio('all');
+
+            // Filter buttons event listeners
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    filterPortfolio(this.getAttribute('data-filter'));
+                });
+            });
+
+            // Pagination buttons event listeners
+            paginationPrev.addEventListener('click', () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    renderPortfolioItems(filteredItems, currentPage);
+                    updatePaginationButtons();
+                    window.scrollTo({
+                        top: portfolioGrid.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+
+            paginationNext.addEventListener('click', () => {
+                const pageCount = Math.ceil(filteredItems.length / itemsPerPage);
+
+                if (currentPage < pageCount) {
+                    currentPage++;
+                    renderPortfolioItems(filteredItems, currentPage);
+                    updatePaginationButtons();
+                    window.scrollTo({
+                        top: portfolioGrid.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+            // Testimonial slider
+            const testimonialSlides = document.querySelectorAll('.testimonial-slide');
+            const dots = document.querySelectorAll('.slider-dot');
+            let currentSlide = 0;
+
+            function showSlide(index) {
+                testimonialSlides.forEach(slide => {
+                    slide.style.display = 'none';
+                });
+                dots.forEach(dot => {
+                    dot.classList.remove('active');
+                });
+
+                testimonialSlides[index].style.display = 'block';
+                dots[index].classList.add('active');
+                currentSlide = index;
+            }
+
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', function () {
+                    showSlide(index);
+                });
+            });
+
+            // Auto slide change
+            setInterval(() => {
+                currentSlide = (currentSlide + 1) % testimonialSlides.length;
+                showSlide(currentSlide);
+            }, 5000);
+
+            // Initialize first slide
+            showSlide(0);
+
+            // Animation on scroll
+            const animateElements = document.querySelectorAll('.animate-in');
+
+            function checkAnimation() {
+                animateElements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+
+                    if (elementPosition < windowHeight - 100) {
+                        element.classList.add('active');
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', checkAnimation);
+            window.addEventListener('load', checkAnimation);
+
+            // Contact form submission
+            const contactForm = document.getElementById('contactForm');
+            const formMessage = document.querySelector('.form-message');
+
+            contactForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                const formData = new FormData(this);
+
+                fetch(this.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            formMessage.textContent = 'Thank you! Your message has been sent successfully.';
+                            formMessage.classList.add('success');
+                            formMessage.classList.remove('error');
+                            contactForm.reset();
+                        } else {
+                            throw new Error('Network response was not ok');
+                        }
+                    })
+                    .catch(error => {
+                        formMessage.textContent = 'Oops! There was a problem sending your message. Please try again later.';
+                        formMessage.classList.add('error');
+                        formMessage.classList.remove('success');
+                    });
+            });
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script>
+    <script>
+        Fancybox.bind("[data-fancybox]", {});
+    </script>
+</body>
+
+</html>
